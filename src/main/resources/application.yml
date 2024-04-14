@@ -1,0 +1,52 @@
+server:
+  # 端口配置
+  port: 8080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+    session:
+      timeout: 30m
+spring:
+  application:
+    # 应用名称
+    name: WareCase
+  # 配置json解析，当属性值为null时不序列化
+  jackson:
+    default-property-inclusion: non_null
+  # 配置连接池
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/warecase?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: chen1234
+    hikari:
+      minimum-idle: 10
+      idle-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 120000
+      connection-timeout: 30000
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+
+
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.warecase.pojo
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:com/warecase/mapper/*Mapper.xml
+  configuration:
+    # 开启驼峰命名
+    mapUnderscoreToCamelCase: true
+
+
+logging:
+  # 配置日志级别为DEBUG
+  level:
+    com.university: DEBUG
