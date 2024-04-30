@@ -13,11 +13,11 @@ import java.util.List;
 public class StatisticsRefundService implements IStatisticsRefundService {
 
     @Resource
-    private StatisticsRefundMapper statisticsRecycleMapper;
+    private StatisticsRefundMapper statisticsRefundMapper;
 
     @Override
     public List<StatisticsRefund> listStatisticsRefund(StatisticsRefund statisticsRefund) {
-        return this.statisticsRecycleMapper.listStatisticsRefund(statisticsRefund);
+        return this.statisticsRefundMapper.listStatisticsRefund(statisticsRefund);
     }
 
 }

@@ -7,10 +7,10 @@
     <select id="listStatisticsRefund" resultType="statisticsRefund" parameterType="statisticsRefund">
         select name, serial_id, return_id, return_date from statistics_refund
         <where>
-            <if test="name !+ null and name != ''">and name = #{name}</if>
-            <if test="serial_id !+ null and serial_id != ''">and serial_id = #{serial_id}</if>
-            <if test="return_id !+ null and return_id != ''">and return_id = #{return_id}</if>
-            <if test="return_date !+ null">and return_date = #{return_date}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+            <if test="serial_id != null and serial_id != ''">and serial_id = #{serialId}</if>
+            <if test="return_id != null and return_id != ''">and return_id = #{returnId}</if>
+            <if test="return_date != null">and return_date = #{returnDate}</if>
         </where>
         order by return_date desc
     </select>
