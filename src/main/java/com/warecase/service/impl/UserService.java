@@ -6,6 +6,11 @@ import com.warecase.service.IUserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+/**
+ * Service层实现类
+ */
 @Service
 public class UserService implements IUserService {
 
@@ -13,10 +18,32 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public User selectUserByUid(Integer uid) {
-        return userMapper.selectUserByUid(uid);
+    public List<User> listUsers(User user) {
+        return this.userMapper.listUsers(user);
     }
 
+    @Override
+    public User selectUserByUId(String userId) {
+        return this.userMapper.selectUserByUId(userId);
+    }
 
+    @Override
+    public int insertUser(User user) {
+        return this.userMapper.insertUser(user);
+    }
 
+    @Override
+    public int deleteUserByUserId(String userId) {
+        return this.userMapper.deleteUserByUserId(userId);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return this.userMapper.updateUser(user);
+    }
+
+    @Override
+    public List<User> selectAllUsers() {
+        return List.of();
+    }
 }

@@ -7,7 +7,7 @@ import com.warecase.constant.HttpStatus;
 /**
  * 操作消息提醒
  *
- * @author college
+ * @author 2280
  */
 public class AjaxResult extends HashMap<String, Object>
 {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warecase.mapper.ProductMapper">
+
+    <select id="listProducts" parameterType="product" resultType="product">
+        select serial_id, name, category, palletid from product
+        <where>
+            <if test="serialId != null and serialId != ''">and serial_id = #{serialId}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+            <if test="category != null and category != ''">and category = #{category}</if>
+            <if test="palletid != null and palletid != ''">and palletid = #{palletid}</if>
+        </where>
+    </select>
+
+</mapper>

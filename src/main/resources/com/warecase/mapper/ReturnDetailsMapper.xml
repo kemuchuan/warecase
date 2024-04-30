@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warecase.mapper.ReturnDetailsMapper">
+
+    <select id="listReturnDetails" parameterType="returnDetails" resultType="returnDetails">
+        select return_id, userId, return_type, return_date, serial_id from returndetails
+        <where>
+            <if test="returnId != null and returnId != ''">
+                and return_id = #{returnId}
+            </if>
+            <if test="userId != null and userID != ''">
+                and userId = #{userId}
+            </if>
+            <if test="returnType != null and returnType != ''">
+                and return_type = #{returnType}
+            </if>
+            <if test="returnDate != null">
+                and return_date = #{returnDate}
+            </if>
+            <if test="serialId!= null and serialId != ''">
+                and serial_id = #{serialId}
+            </if>
+        </where>
+    </select>
+</mapper>

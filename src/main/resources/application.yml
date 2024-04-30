@@ -4,6 +4,7 @@ server:
   servlet:
     # 应用的访问路径
     context-path: /
+    # session超时时间
     session:
       timeout: 30m
 spring:
@@ -15,11 +16,17 @@ spring:
     default-property-inclusion: non_null
   # 配置连接池
   datasource:
+    # 数据连接池类型
     type: com.zaxxer.hikari.HikariDataSource
+    # 驱动类
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接地址
     url: jdbc:mysql://127.0.0.1:3306/warecase?useUnicode=true&characterEncoding=utf8&useSSL=false
+    # 用户名
     username: root
+    # 密码
     password: chen1234
+    # 连接池配置
     hikari:
       minimum-idle: 10
       idle-timeout: 30000

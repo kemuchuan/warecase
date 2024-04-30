@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warecase.mapper.PalletMapper">
+    <select id="listPallets" parameterType="pallet" resultType="pallet">
+        select palletid, return_date, number, lorryid from pallet
+        <where>
+            <if test="palletid != null and palletid != ''">
+                palletid = #{palletid}
+            </if>
+            <if test="return_date != null">
+                and return_date = #{returnDate}
+            </if>
+            <if test="number != null and number != ''">
+                and number = #{number}
+            </if>
+            <if test="lorryid != null and lorryid != ''">
+                and lorryid = #{lorryid}
+            </if>
+        </where>
+    </select>
+</mapper>

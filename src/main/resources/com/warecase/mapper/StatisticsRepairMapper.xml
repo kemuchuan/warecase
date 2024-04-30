@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warecase.mapper.StatisticsRepairMapper">
+
+    <select id="listStatisticsRepair" resultType="statisticsRepair" parameterType="statisticsRepair">
+        select name, serial_id, return_id, return_date from statistics_repair
+        <where>
+            <if test="name !+ null and name != ''">and name = #{name}</if>
+            <if test="serial_id !+ null and serial_id != ''">and serial_id = #{serial_id}</if>
+            <if test="return_id !+ null and return_id != ''">and return_id = #{return_id}</if>
+            <if test="return_date !+ null">and return_date = #{return_date}</if>
+        </where>
+        order by return_date desc
+    </select>
+</mapper>
