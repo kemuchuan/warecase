@@ -44,6 +44,6 @@ public class UserService implements IUserService {
 
     @Override
     public List<User> selectAllUsers() {
-        return List.of();
+        return this.userMapper.selectAllUsers();
     }
 }

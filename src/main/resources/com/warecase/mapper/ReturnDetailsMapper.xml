@@ -8,7 +8,7 @@
             <if test="returnId != null and returnId != ''">
                 and return_id = #{returnId}
             </if>
-            <if test="userId != null and userID != ''">
+            <if test="userId != null and userId != ''">
                 and userId = #{userId}
             </if>
             <if test="returnType != null and returnType != ''">

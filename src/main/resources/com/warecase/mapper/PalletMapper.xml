@@ -7,7 +7,7 @@
             <if test="palletid != null and palletid != ''">
                 palletid = #{palletid}
             </if>
-            <if test="return_date != null">
+            <if test="returnDate != null">
                 and return_date = #{returnDate}
             </if>
             <if test="number != null and number != ''">

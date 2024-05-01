@@ -25,8 +25,9 @@ public class UserController extends BaseController {
      * @param user 用户信息
      * @return 用户信息列表
      */
-    public List<User> listUsers(User user){
-        return this.userService.listUsers(user);
+    @GetMapping("/list")
+    public AjaxResult listUsers(User user){
+        return success(this.userService.listUsers(user));
     }
 
     /**
@@ -55,7 +56,7 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public AjaxResult addUser(@RequestBody User user){
-        return success(this.userService.insertUser(user));
+        return toAjax(this.userService.insertUser(user));
     }
 
     /**
@@ -65,7 +66,7 @@ public class UserController extends BaseController {
      */
     @PutMapping
     public AjaxResult updateUser(@RequestBody User user){
-        return success(this.userService.updateUser(user));
+        return toAjax(this.userService.updateUser(user));
     }
 
     /**
@@ -75,7 +76,7 @@ public class UserController extends BaseController {
      */
     @DeleteMapping("/{userId}")
     public AjaxResult deleteUser(@PathVariable("userId") String userId){
-        return success(this.userService.deleteUserByUserId(userId));
+        return toAjax(this.userService.deleteUserByUserId(userId));
     }
 
 }

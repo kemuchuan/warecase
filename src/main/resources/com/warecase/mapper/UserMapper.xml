@@ -7,13 +7,13 @@
     <select id="listUsers" parameterType="user" resultType="user">
         select user_id, name, permission from user
         <where>
-            <if test="userId != null and userId!= ''">
+            <if test="userId != null and userId != ''">
                 and user_id = #{userId}
             </if>
-            <if test="name != null and name!= ''">
+            <if test="name != null and name != ''">
                 and name like #{name}
             </if>
-            <if test="permission != null and permission!= ''">
+            <if test="permission != null and permission != ''">
                 and permission = #{permission}
             </if>
         </where>

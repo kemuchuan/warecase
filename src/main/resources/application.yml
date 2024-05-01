@@ -54,9 +54,10 @@ mybatis:
   configuration:
     # 开启驼峰命名
     mapUnderscoreToCamelCase: true
+    # 打印sql语句
 
 
 logging:
   # 配置日志级别为DEBUG
   level:
-    com.university: DEBUG
+    com.warecase.mapper: debug
