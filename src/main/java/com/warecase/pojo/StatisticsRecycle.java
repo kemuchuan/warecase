@@ -15,6 +15,6 @@ public class StatisticsRecycle extends BasePojo {
     private String returnId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date recycleDate;
+    private Date returnDate;
 
 }

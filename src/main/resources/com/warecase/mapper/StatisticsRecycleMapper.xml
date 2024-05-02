@@ -10,7 +10,7 @@
             <if test="name != null and name != ''">and name = #{name}</if>
             <if test="serialId != null and serialId != ''">and serial_id = #{serialId}</if>
             <if test="returnId != null and returnId != ''">and return_id = #{returnId}</if>
-            <if test="returnDate != null">and returnDate = #{returnDate}</if>
+            <if test="returnDate != null">and return_date = #{returnDate}</if>
         </where>
         order by return_date desc
     </select>
