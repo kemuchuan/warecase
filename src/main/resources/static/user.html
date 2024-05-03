@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recycle Management</title>
+  <link rel="stylesheet" href="css/HomePage.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/sidebar.js"></script>
+</head>
+<body>
+<div class="top-bar">
+  <button id="sidebar-button" onclick="toggleSidebar()">Menu</button>
+</div>
+<div id="sidebar">
+  <img src="img/logo.png" alt="WareEase Logo" id="logo">
+  <ul>
+    <li><a href="home.html"><img src="img/home icon.png" alt="" class="icon">Home Page</a></li>
+    <li><a href="company.html"><img src="img/company icon.png" alt="" class="icon">Company Information</a></li>
+    <li class="active"><a href="user.html"><img src="img/user icon.png" alt="" class="icon">User Role</a></li>
+    <li><a href="receiving.html"><img src="img/receiving icon.png" alt="" class="icon">Receiving Management</a></li>
+    <li><a href="repair.html"><img src="img/stock icon.png" alt="" class="icon">Repair Management</a></li>
+    <li><a href="refund.html"><img src="img/stock icon.png" alt="" class="icon">Refund Management</a></li>
+    <li><a href="recycle.html"><img src="img/stock icon.png" alt="" class="icon">Recycle Management</a></li>
+  </ul>
+</div>
+<div id="main-content">
+  <div class="content-header">
+    <h2 class="title">User Management</h2>
+    <div class="content-controls">
+      <button id="showAddProductFormButton" class="control-button add">+</button>
+      <button class="control-button refresh">⟳</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table id="productTable" class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Full Name</th>
+          <th>Username</th>
+          <th>Staff ID</th>
+          <th>User Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="productTableBody">
+        <!-- Existing row template -->
+        <tr>
+            <td>1</td>
+            <td>Emily</td>
+            <td>superman</td>
+            <td>42</td>
+            <td>100</td>
+            <td>
+              <button class='operate-button edit' onclick='editProduct(this.parentNode.parentNode)'>Edit</button>
+              <button class="operate-button delete">Delete</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="addProductForm" style="display: none;">
+    <input type="text" id="productName" placeholder="Full Name">
+    <input type="text" id="category" placeholder="Username">
+    <input type="text" id="lorryID" placeholder="Staff ID">
+    <select id="palletID">
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    <button id="addButton" class="operate-button">Add Product</button>
+  </div>
+</div>
+
+<script src="js/user.js"></script>
+</body>
+</html>
+

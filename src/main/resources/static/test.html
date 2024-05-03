@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>User Management</h1>
+  <button id="add-user-button">Add User</button>
+
+  <table id="user-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th></th> </tr>
+    </thead>
+    <tbody id="user-data"></tbody>
+  </table>
+
+  <div id="add-user-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('add-user-modal')">&times;</span>
+      <h2>Add User</h2>
+      <input type="text" id="new-username" placeholder="Username">
+      <select id="new-user-role">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+      <button id="submit-new-user">Add User</button>
+    </div>
+  </div>
+
+  <script src="user.js"></script>
+</body>
+</html>
