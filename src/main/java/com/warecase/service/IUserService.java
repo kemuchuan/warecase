@@ -18,6 +18,11 @@ public interface IUserService {
     List<User> listUsers(User user);
 
     /**
+     * 根据用户name查询用户
+     */
+    User selectUserByName(String name);
+
+    /**
      * 根据userId查询用户
      * @param userId 用户id
      * @return 用户对象

@@ -15,5 +15,7 @@ public class User extends BasePojo {
     private String name;
     // 许可证
     private String permission;
+    // 密码
+    private String password;
 
 }

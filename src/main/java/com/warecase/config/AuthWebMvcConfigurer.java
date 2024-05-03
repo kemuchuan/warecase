@@ -1,5 +1,7 @@
 package com.warecase.config;
 
+import com.warecase.filter.TokenHandlerInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -10,21 +12,23 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class AuthWebMvcConfigurer implements WebMvcConfigurer {
 
-//    TokenHandlerInterceptor authHandlerInterceptor;
+    // 注入 TokenHandlerInterceptor
+    @Resource
+    TokenHandlerInterceptor authHandlerInterceptor;
 
     /**
      * 给除了 /login 的接口都配置拦截器,拦截转向到 authHandlerInterceptor
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-//        registry.addInterceptor()
-//                .addPathPatterns("/**")//配置拦截路径
-//                .excludePathPatterns("/login");//放行路径
+        registry.addInterceptor(authHandlerInterceptor)
+                .addPathPatterns("/**")//配置拦截路径
+                .excludePathPatterns("/login");//放行路径
     }
 
+    // 配置跨域
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // 解决跨域操作
         registry.addMapping("/**")
                 .allowedHeaders("*")
                 .allowedOriginPatterns("*")

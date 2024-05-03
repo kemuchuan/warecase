@@ -21,11 +21,19 @@ public interface UserMapper {
     List<User> listUsers(User user);
 
     /**
+     * 根据用户name查询用户
+     * @param name 用户name
+     * @return 用户对象
+     */
+    @Select("select user_id,name,permission,password from user where name = #{name}")
+    User selectUserByName(String name);
+
+    /**
      * 根据userId查询用户
      * @param userId 用户id
      * @return 用户对象
      */
-    @Select("select user_id,name,permission from user where user_id = #{userId}")
+    @Select("select user_id,name,permission,password from user where user_id = #{userId}")
     User selectUserByUId(String userId);
 
     /**
@@ -33,7 +41,7 @@ public interface UserMapper {
      * @param user 用户对象
      * @return 影响的行数
      */
-    @Insert("insert into user(user_id,name,permission) value(#{userId},#{name},#{permission})")
+    @Insert("insert into user(user_id,name,permission,password) value(#{userId},#{name},#{permission},#{password})")
     int insertUser(User user);
 
     /**
@@ -49,7 +57,7 @@ public interface UserMapper {
      * @param user 用户对象
      * @return 影响的行数
      */
-    @Update("update user set name = #{name}, permission = #{permission} where user_id = #{userId}")
+    @Update("update user set name = #{name}, permission = #{permission},password = #{password} where user_id = #{userId}")
     int updateUser(User user);
 
     /**

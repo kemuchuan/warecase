@@ -1,4 +1,4 @@
-package com.warecase.util;
+package com.warecase.util.date;
 
 import java.lang.management.ManagementFactory;
 import java.text.ParseException;

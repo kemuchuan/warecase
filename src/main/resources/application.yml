@@ -61,3 +61,11 @@ logging:
   # 配置日志级别为DEBUG
   level:
     com.warecase.mapper: debug
+
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: dasdkjfds
+  # 令牌有效期（默认30分钟）
+  expireTime: 30

@@ -23,6 +23,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User selectUserByName(String name) {
+        return this.userMapper.selectUserByName(name);
+    }
+
+    @Override
     public User selectUserByUId(String userId) {
         return this.userMapper.selectUserByUId(userId);
     }

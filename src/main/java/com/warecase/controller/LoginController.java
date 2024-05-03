@@ -1,9 +1,11 @@
 package com.warecase.controller;
 
+import com.warecase.constant.HttpStatus;
 import com.warecase.core.common.AjaxResult;
 import com.warecase.core.controler.BaseController;
 import com.warecase.pojo.User;
 import com.warecase.service.IUserService;
+import com.warecase.util.token.TokenService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,9 @@ public class LoginController extends BaseController {
     @Resource
     private IUserService userService;
 
+    @Resource
+    private TokenService tokenService;
+
     /**
      * login
      * @param user user
@@ -23,13 +28,16 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/login")
     public AjaxResult login(@RequestBody User user) {
-        User tmpUser = this.userService.selectUserByUId(user.getUserId());
+        User tmpUser = this.userService.selectUserByName(user.getName());
         if(tmpUser == null){
             return error("the user does not exist");
         }
-        if(tmpUser.getPermission().equals(user.getPermission())
-                &&tmpUser.getName().equals(user.getName())){
-            return success("the user login success");
+        if(tmpUser.getPassword().equals(user.getPassword())){
+            String token = tokenService.getToken(tmpUser.getName(),tmpUser.getPermission());
+            AjaxResult ajaxResult = new AjaxResult(HttpStatus.SUCCESS, "the user login success");
+            ajaxResult.put("token",token);
+            ajaxResult.put("permission",tmpUser.getPermission());
+            return ajaxResult;
         }else{
             return error("the user login failed");
         }
@@ -42,7 +50,7 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/register")
     public AjaxResult register(@RequestBody User user) {
-        User tmpUser = this.userService.selectUserByUId(user.getUserId());
+        User tmpUser = this.userService.selectUserByName(user.getName());
         if(tmpUser != null){
             return error("the user already exist");
         }else{

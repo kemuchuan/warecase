@@ -6,6 +6,7 @@ import com.warecase.service.IReturnDetailsService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class ReturnDetailsService implements IReturnDetailsService {
 
     @Override
     public int insertReturnDetails(ReturnDetails returnDetails) {
+        returnDetails.setReturnDate(new Date());
         return this.returnDetailsMapper.insertReturnDetails(returnDetails);
     }
 
