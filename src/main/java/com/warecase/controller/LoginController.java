@@ -28,12 +28,12 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/login")
     public AjaxResult login(@RequestBody User user) {
-        User tmpUser = this.userService.selectUserByName(user.getName());
+        User tmpUser = this.userService.selectUserByUId(user.getUserId());
         if(tmpUser == null){
             return error("the user does not exist");
         }
         if(tmpUser.getPassword().equals(user.getPassword())){
-            String token = tokenService.getToken(tmpUser.getName(),tmpUser.getPermission());
+            String token = tokenService.getToken(tmpUser.getUserId(),tmpUser.getPermission());
             AjaxResult ajaxResult = new AjaxResult(HttpStatus.SUCCESS, "the user login success");
             ajaxResult.put("token",token);
             ajaxResult.put("permission",tmpUser.getPermission());
@@ -50,7 +50,7 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/register")
     public AjaxResult register(@RequestBody User user) {
-        User tmpUser = this.userService.selectUserByName(user.getName());
+        User tmpUser = this.userService.selectUserByUId(user.getUserId());
         if(tmpUser != null){
             return error("the user already exist");
         }else{

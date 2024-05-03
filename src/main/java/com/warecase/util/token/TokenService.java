@@ -26,17 +26,17 @@ public class TokenService {
     private int expireTime;
 
     /**
-     * 根据name和permission生成token
-     * @param name 用户名
+     * 根据userId和permission生成token
+     * @param userId 用户名
      * @param permission 用户权限
      * @return token
      */
-    public String getToken(String name,String permission){
+    public String getToken(String userId,String permission){
         Calendar instance = Calendar.getInstance();
         instance.add(Calendar.MINUTE,expireTime);
         JWTCreator.Builder builder = JWT.create();
         return JWT.create()
-                .withClaim("name",name)
+                .withClaim("userId",userId)
                 .withClaim("permission",permission)
                 .withExpiresAt(instance.getTime())
                 .sign(Algorithm.HMAC256(secret));

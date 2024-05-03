@@ -46,7 +46,7 @@ public class TokenHandlerInterceptor implements HandlerInterceptor {
             return false;
         }
         // 判断是否有权限
-        if(!this.permissionService.hasPermission(request.getRequestURI(),verify.getClaim("name").asString())){
+        if(!this.permissionService.hasPermission(request.getRequestURI(),verify.getClaim("permission").asString())){
             this.responseError(response, HttpStatus.FORBIDDEN, "没有该操作权限，请联系管理员！");
             return false;
         }
