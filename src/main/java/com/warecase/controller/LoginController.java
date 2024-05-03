@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController extends BaseController {
 
-    // 自动注入IUserService（VUE）
+    // 自动注入IUserService
     @Resource
     private IUserService userService;
 
