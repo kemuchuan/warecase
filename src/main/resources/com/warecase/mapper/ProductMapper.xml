@@ -14,4 +14,14 @@
         </where>
     </select>
 
+    <update id="updateProduct" parameterType="product">
+        update product
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="category != null and category != ''">category = #{category},</if>
+            <if test="palletid != null and palletid != ''">palletid = #{palletid},</if>
+        </set>
+            where serial_id = #{serialId}
+    </update>
+
 </mapper>

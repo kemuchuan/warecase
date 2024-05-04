@@ -41,7 +41,6 @@ public interface UserMapper {
      * @param user 用户对象
      * @return 影响的行数
      */
-    @Insert("insert into user(user_id,name,permission,password) value(#{userId},#{name},#{permission},#{password})")
     int insertUser(User user);
 
     /**
@@ -57,7 +56,6 @@ public interface UserMapper {
      * @param user 用户对象
      * @return 影响的行数
      */
-    @Update("update user set name = #{name}, permission = #{permission},password = #{password} where user_id = #{userId}")
     int updateUser(User user);
 
     /**

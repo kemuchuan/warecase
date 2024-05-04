@@ -30,7 +30,6 @@ public interface ProductMapper {
      * @param product 产品信息对象
      * @return 影响行数
      */
-    @Update("update product set name = #{name}, category = #{category}, palletid = #{palletid} where serial_id = #{serialId}")
     int updateProduct(Product product);
 
     /**

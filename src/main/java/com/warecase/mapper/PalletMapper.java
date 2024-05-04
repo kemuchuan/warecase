@@ -45,7 +45,6 @@ public interface PalletMapper {
      * @param pallet 托盘对象
      * @return 返回受影响的行数
      */
-    @Update("update pallet set return_date = #{returnDate}, number = #{number}, lorryid = #{lorryid} where palletid = #{palletid}")
     int updatePallet(Pallet pallet);
 
     /**

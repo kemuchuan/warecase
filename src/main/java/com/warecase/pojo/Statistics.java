@@ -1,19 +1,21 @@
 package com.warecase.pojo;
 
-import com.warecase.core.pojo.BasePojo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
-public class Statistics extends BasePojo {
+public class Statistics {
 
-    private String name;
-
-    private String totalreturned;
-
-    private String totalrepair;
-
-    private String totalrefund;
-
-    private String totalrecycle;
+    private String productName;
+    private String serialId;
+    private String returnId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date returnDate;
+    private String palletid;
+    private String username;
 
 }

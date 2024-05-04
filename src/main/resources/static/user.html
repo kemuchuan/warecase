@@ -37,37 +37,37 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Full Name</th>
-          <th>Username</th>
+<!--          <th>Full Name</th>-->
           <th>Staff ID</th>
+          <th>Username</th>
           <th>User Role</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody id="productTableBody">
         <!-- Existing row template -->
-        <tr>
-            <td>1</td>
-            <td>Emily</td>
-            <td>superman</td>
-            <td>42</td>
-            <td>100</td>
-            <td>
-              <button class='operate-button edit' onclick='editProduct(this.parentNode.parentNode)'>Edit</button>
-              <button class="operate-button delete">Delete</button>
-            </td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>1</td>-->
+<!--&lt;!&ndash;            <td>Emily</td>&ndash;&gt;-->
+<!--            <td>superman</td>-->
+<!--            <td>42</td>-->
+<!--            <td>100</td>-->
+<!--            <td>-->
+<!--              <button class='operate-button edit' onclick='editProduct(this.parentNode.parentNode)'>Edit</button>-->
+<!--              <button class="operate-button delete">Delete</button>-->
+<!--            </td>-->
+<!--        </tr>-->
       </tbody>
     </table>
   </div>
 
   <div id="addProductForm" style="display: none;">
-    <input type="text" id="productName" placeholder="Full Name">
-    <input type="text" id="category" placeholder="Username">
-    <input type="text" id="lorryID" placeholder="Staff ID">
-    <select id="palletID">
-      <option value="admin">Admin</option>
-      <option value="user">User</option>
+    <input type="text" id="userId" placeholder="Staff ID">
+    <input type="text" id="name" placeholder="Username">
+    <select id="permission">
+      <option value="Manager of Operations">Manager of Operations</option>
+      <option value="Senior Logistics and Shipping Associate">Senior Logistics and Shipping Associate</option>
+      <option value="Junior Logistics and Shipping Associate">Junior Logistics and Shipping Associate</option>
     </select>
     <button id="addButton" class="operate-button">Add Product</button>
   </div>

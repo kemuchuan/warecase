@@ -18,4 +18,14 @@
             </if>
         </where>
     </select>
+
+    <update id="updatePallet" parameterType="pallet">
+        update pallet
+        <set>
+            <if test="lorryid != null and lorryid != ''">lorryid = #{lorryid},</if>
+            <if test="number != null and number != ''">number = #{number},</if>
+            <if test="returnDate != null">return_date = #{returnDate},</if>
+        </set>
+            where palleteid = #{palletid}
+    </update>
 </mapper>

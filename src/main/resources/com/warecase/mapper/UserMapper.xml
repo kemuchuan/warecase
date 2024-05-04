@@ -19,4 +19,30 @@
         </where>
     </select>
 
+    <update id="updateUser" parameterType="user">
+        update user
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="permission != null and permission != ''">permission = #{permission},</if>
+        </set>
+            where user_id = #{userId}
+    </update>
+
+    <insert id="insertUser" parameterType="user">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">user_id,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="password != null and password != ''">password,</if>
+            <if test="permission != null and permission != ''">permission,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">#{userId},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="password != null and password != ''">#{password},</if>
+            <if test="permission != null and permission != ''">#{permission},</if>
+        </trim>
+    </insert>
+
 </mapper>

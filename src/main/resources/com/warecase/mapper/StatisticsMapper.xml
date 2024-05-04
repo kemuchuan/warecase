@@ -4,10 +4,44 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.warecase.mapper.StatisticsMapper">
 
+    <select id="listStatisticsRefund" resultType="statistics" parameterType="statistics">
+        select product_name, serial_id, palletid, return_id, return_date, username from statistics_refund
+        <where>
+            <if test="productName != null and productName != ''">and product_name = #{productName}</if>
+            <if test="serialId != null and serialId != ''">and serial_id = #{serialId}</if>
+            <if test="palletid != null and palletid != ''">and palletid = #{palletid}</if>
+            <if test="returnId != null and returnId != ''">and return_id = #{returnId}</if>
+            <if test="returnDate != null">and returnDate = #{returnDate}</if>
+            <if test="username != null and username != ''">and username = #{username}</if>
+        </where>
+        order by return_date desc
+    </select>
 
-<!--    <select id="listStatistics" resultType="statistics" parameterType="statistics">-->
-<!--    </select>-->
+    <select id="listStatisticsRecycle" resultType="statistics" parameterType="statistics">
+        select product_name, serial_id, palletid, return_id, return_date, username from statistics_recycle
+        <where>
+            <if test="productName != null and productName != ''">and product_name = #{productName}</if>
+            <if test="serialId != null and serialId != ''">and serial_id = #{serialId}</if>
+            <if test="palletid != null and palletid != ''">and palletid = #{palletid}</if>
+            <if test="returnId != null and returnId != ''">and return_id = #{returnId}</if>
+            <if test="returnDate != null">and returnDate = #{returnDate}</if>
+            <if test="username != null and username != ''">and username = #{username}</if>
+        </where>
+        order by return_date desc
+    </select>
 
+    <select id="listStatisticsRepair" resultType="statistics" parameterType="statistics">
+        select product_name, serial_id, palletid, return_id, return_date, username from statistics_repair
+        <where>
+            <if test="productName != null and productName != ''">and product_name = #{productName}</if>
+            <if test="serialId != null and serialId != ''">and serial_id = #{serialId}</if>
+            <if test="palletid != null and palletid != ''">and palletid = #{palletid}</if>
+            <if test="returnId != null and returnId != ''">and return_id = #{returnId}</if>
+            <if test="returnDate != null">and returnDate = #{returnDate}</if>
+            <if test="username != null and username != ''">and username = #{username}</if>
+        </where>
+        order by return_date desc
+    </select>
 
 
 </mapper>

@@ -22,4 +22,15 @@
             </if>
         </where>
     </select>
+
+    <update id="updateReturnDetails" parameterType="returnDetails">
+        update returndetails
+        <set>
+            <if test="usericId != null and userId != ''">user_id = #{userId},</if>
+            <if test="returnType != null and returnType != ''">return_type = #{returnType},</if>
+            <if test="returnDate != null">return_date = #{returnDate},</if>
+            <if test="serialId != null and serialId != ''">serial_id = #{serialId},</if>
+        </set>
+            where return_id = #{returnId}
+    </update>
 </mapper>

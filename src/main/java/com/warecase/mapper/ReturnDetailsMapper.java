@@ -45,7 +45,6 @@ public interface ReturnDetailsMapper {
      * @param returnDetails 退货明细
      * @return 影响行数
      */
-    @Update("update returndetails set return_type = #{returnType}, return_date = #{returnDate}, serial_id = #{serialId},userId = #{userId} where return_id = #{returnId}")
     int updateReturnDetails(ReturnDetails returnDetails);
 
     /**

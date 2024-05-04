@@ -21,9 +21,10 @@ public class AuthWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(authHandlerInterceptor)
-                .addPathPatterns("/**")//配置拦截路径
-                .excludePathPatterns("/login");//放行路径
+//        registry.addInterceptor(authHandlerInterceptor)
+//                .addPathPatterns("/**")//配置拦截路径
+//                .excludePathPatterns("/login")
+//                .excludePathPatterns("/*.html","/**/*.html","/*.js","/**/*.js","/*.css","/**/*.css","/*.png","/**/*.png","/*.jpg","/**/*.jpg","/*.ico");//放行路径
     }
 
     // 配置跨域
@@ -40,6 +41,6 @@ public class AuthWebMvcConfigurer implements WebMvcConfigurer {
     // 配置静态资源
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 }

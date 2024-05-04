@@ -1,25 +1,33 @@
 // login page
 
 function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
-    // Simulated user database
-    var users = [
-        { username: "admin", password: "admin", role: "admin" },
-        { username: "user", password: "user", role: "user" }
-    ];
-
-    // Check if user exists and password matches
-    var authenticatedUser = users.find(function(user) {
-        return user.username === username && user.password === password;
-    });
-
-    if (authenticatedUser) {
-        // Set user role and redirect to main application page
-        localStorage.setItem("currentUser", JSON.stringify(authenticatedUser));
-        window.location.href = "home.html"; // Redirect to main application page
-    } else {
-        alert("Invalid username or password");
+    if(!username.trim() || !password.trim()){
+        alert("Please enter username or password");
     }
+
+    let user = {"userId": username, "password": password}
+
+    fetch("http://localhost:8080/login",
+        {
+            method: "post",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.code === 200){
+                sessionStorage.setItem("token", data.token)
+                sessionStorage.setItem("permission", data.permission)
+                sessionStorage.setItem("userId", user.userId)
+                // localStorage.setItem("token", data.token)
+                // localStorage.setItem("permission", data.permission)
+                // localStorage.setItem("userId", user.userId)
+                window.location.href = "home.html"; // Redirect to main application page
+            }else{
+                alert("Invalid username or password");
+            }
+        })
 }

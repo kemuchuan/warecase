@@ -2,12 +2,8 @@ package com.warecase.controller;
 
 import com.warecase.core.common.AjaxResult;
 import com.warecase.core.controler.BaseController;
-import com.warecase.pojo.StatisticsRecycle;
-import com.warecase.pojo.StatisticsRefund;
-import com.warecase.pojo.StatisticsRepair;
-import com.warecase.service.IStatisticsRecycleService;
-import com.warecase.service.IStatisticsRefundService;
-import com.warecase.service.IStatisticsRepairService;
+import com.warecase.pojo.Statistics;
+import com.warecase.service.IStatisticsService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,26 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatisticsController extends BaseController {
 
     @Resource
-    private IStatisticsRepairService statisticsRepairService;
-
-    @Resource
-    private IStatisticsRefundService statisticsRefundService;
-
-    @Resource
-    private IStatisticsRecycleService statisticsRecycleService;
+    private IStatisticsService statisticsService;
 
     @GetMapping("/statistics/repair")
-    public AjaxResult getStatisticsRepair(StatisticsRepair statisticsRepair) {
-        return success(statisticsRepairService.listStatisticsRepair(statisticsRepair));
+    public AjaxResult getStatisticsRepair(Statistics statisticsRepair) {
+        return success(statisticsService.listStatisticsRepair(statisticsRepair));
     }
 
     @GetMapping("/statistics/refund")
-    public AjaxResult getStatisticsRefund(StatisticsRefund statisticsRefund) {
-        return success(statisticsRefundService.listStatisticsRefund(statisticsRefund));
+    public AjaxResult getStatisticsRefund(Statistics statisticsRefund) {
+        return success(statisticsService.listStatisticsRefund(statisticsRefund));
     }
 
     @GetMapping("/statistics/recycle")
-    public AjaxResult getStatisticsRecycle(StatisticsRecycle statisticsRecycle) {
-        return success(statisticsRecycleService.listStatisticsRecycle(statisticsRecycle));
+    public AjaxResult getStatisticsRecycle(Statistics statisticsRecycle) {
+        return success(statisticsService.listStatisticsRecycle(statisticsRecycle));
     }
 }
