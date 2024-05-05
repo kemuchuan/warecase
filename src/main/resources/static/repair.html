@@ -38,7 +38,8 @@
         <tr>
           <th>#</th>
           <th>Product name</th>
-          <th>Serial ID</th>
+          <th>Category</th>
+          <th>Lorry ID</th>
           <th>Pallet ID</th>
           <th>Staff</th>
           <th>Return Date</th>
@@ -49,6 +50,7 @@
         <!-- Existing row template -->
         <tr>
             <td>1</td>
+            <td>Emily</td>
             <td>superman</td>
             <td>42</td>
             <td>100</td>
@@ -65,16 +67,18 @@
 
   <div id="addProductForm" style="display: none;">
     <input type="text" id="productName" placeholder="Product Name">
-    <input type="text" id="category" placeholder="Category">
+    <select id="category"> </select>
     <input type="text" id="lorryID" placeholder="Lorry ID">
     <input type="text" id="palletID" placeholder="Pallet ID">
     <input type="text" id="staff" placeholder="Staff">
     <input type="date" id="returnDate" placeholder="Return Date">
     <button id="addButton" class="operate-button">Add Product</button>
-  </div>
 </div>
-<script src="js/repair.js"></script>
-<script src="js/script.js"></script>
+
+</div>
+<script src="js/repair.js"></script>  
+
+
 </body>
 </html>
 
