@@ -59,7 +59,6 @@
             <td>
               <button class='operate-button edit' onclick='editProduct(this.parentNode.parentNode)'>Edit</button>
               <button class="operate-button delete">Delete</button>
-              <button class="operate-button repair" onclick="copyToRepair(this.parentNode.parentNode)">Repair</button>
             </td>
         </tr>
       </tbody>
@@ -68,16 +67,16 @@
 
   <div id="addProductForm" style="display: none;">
     <input type="text" id="productName" placeholder="Product Name">
-    <input type="text" id="category" placeholder="Category">
+    <select id="category"> </select>
     <input type="text" id="lorryID" placeholder="Lorry ID">
     <input type="text" id="palletID" placeholder="Pallet ID">
     <input type="text" id="staff" placeholder="Staff">
     <input type="date" id="returnDate" placeholder="Return Date">
     <button id="addButton" class="operate-button">Add Product</button>
-  </div>
 </div>
-<script src="js/receiving.js" defer></script>
-<script src="js/script.js"></script>
+
+</div>
+<script src="js/receiving.js"></script>  
 
 
 </body>
