@@ -1,6 +1,6 @@
 // refund.js
 
-let url = "http://localhost:8080/statistics";
+let url = "http://localhost:80/statistics";
 
 // Function to get all recycle data from the server
 function getAllRecycle() {

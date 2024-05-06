@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/user"
+let url = "http://localhost:80/user"
 
 // table information initialization
 function getAllUser(){

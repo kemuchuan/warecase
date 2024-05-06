@@ -6,11 +6,12 @@ function login() {
 
     if(!username.trim() || !password.trim()){
         alert("Please enter username or password");
+        return;
     }
 
     let user = {"userId": username, "password": password}
 
-    fetch("http://localhost:8080/login",
+    fetch("http://localhost:80/login",
         {
             method: "post",
             headers: {"Content-Type": "application/json"},
