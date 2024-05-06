@@ -33,6 +33,12 @@ public class TokenHandlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        // 允许跨域请求
+        if(request.getMethod().equalsIgnoreCase("OPTIONS")){
+            return true;
+        }
+
         String token = request.getHeader(this.header);
         // 判断token是否为空
         if(token==null){
