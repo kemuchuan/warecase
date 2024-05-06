@@ -1,10 +1,10 @@
-// repair.js
+// refund.js
 
 let url = "http://localhost:8080/statistics";
 
-// Function to get all repair data from the server
-function getAllRepair() {
-    fetch(url+"/repair", {headers: {"Authorization": sessionStorage.getItem("token")}})
+// Function to get all refund data from the server
+function getAllRefund() {
+    fetch(url+"/refund", {headers: {"Authorization": sessionStorage.getItem("token")}})
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {
@@ -20,7 +20,7 @@ function getAllRepair() {
                         '            <td>' + item.returnDate + '</td>\n' +
                         '            <td>\n' +
                         '              <button class=\'operate-button edit\' onclick=\'editProduct(this.parentNode.parentNode)\'>Edit</button>\n' +
-                        '              <button class="operate-button delete" onclick="deleteRepair(' + item.returnId + ')">Delete</button>\n' +
+                        '              <button class="operate-button delete" onclick="deleteRefund(' + item.returnId + ')">Delete</button>\n' +
                         '            </td>\n' +
                         '        </tr>'
                 })
@@ -29,8 +29,8 @@ function getAllRepair() {
         })
 }
 
-// Function to add a new repair
-function addRepair(){
+// Function to add a new refund
+function addRefund(){
     let productName = document.getElementById("productName").value;
     let serialId = document.getElementById("serialId").value;
     let palletId = document.getElementById("palletId").value;
@@ -47,7 +47,7 @@ function addRepair(){
         "serialId": serialId,
         "palletid": palletId,
         "username": username,
-        "returnType":"repair"
+        "returnType":"refund"
     }
 
     fetch(url,{
@@ -61,14 +61,14 @@ function addRepair(){
         .then(data => {
             if(data.code === 200){
                 document.getElementById("addProductForm").style.display = "none";
-                getAllRepair();
+                getAllRefund();
             }
         })
 }
 
-// function to delete a repair
-function deleteRepair(returnId){
-    if(confirm("Are you sure you want to delete this repair?")){
+// function to delete a refund
+function deleteRefund(returnId){
+    if(confirm("Are you sure you want to delete this refund?")){
         fetch(url+"/"+returnId, {
             method: "DELETE",
             headers: {
@@ -77,7 +77,7 @@ function deleteRepair(returnId){
         }).then(res => res.json())
             .then(data => {
                 if (data.code === 200) {
-                    getAllRepair();
+                    getAllRefund();
                 }
             })
     }
@@ -268,9 +268,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then(res => res.json())
             .then(data => {
                 if (data.code === 200) {
-                    getAllRepair();
+                    getAllRefund();
                 }
-        })
+            })
 
         // Update cell content with new values
         for (var i = 1; i < cells.length - 1; i++) {
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("showAddProductFormButton").addEventListener("click", toggleAddProductForm);
 
     // Add event listener for add button
-    document.getElementById("addButton").addEventListener("click", addRepair);
+    document.getElementById("addButton").addEventListener("click", addRefund);
 
     // Event delegation for delete buttons
     // document.getElementById("productTableBody").addEventListener("click", function(event) {
@@ -325,6 +325,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    getAllRepair();
+    getAllRefund();
 });
 

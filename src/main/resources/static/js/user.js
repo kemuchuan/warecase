@@ -42,7 +42,7 @@ function addUser(){
     }).then(res => res.json()).then(res => {
         if(res.code === 200){
             getAllUser();
-            document.getElementById("showAddProductFormButton").style.display = "none";
+            document.getElementById("addProductForm").style.display = "none";
         }
     })
 }

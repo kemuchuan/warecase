@@ -13,7 +13,7 @@ public class PermissionService {
         }else if("Senior Logistics and Shipping Associate".equals(permission)){
             flag = !url.contains("user");
         }else if("Junior Logistics and Shipping Associate".equals(permission)){
-            flag = url.contains("returnDetails");
+            flag = url.endsWith("statistics");
         }
         return flag;
     }

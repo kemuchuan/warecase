@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface StatisticsMapper {
 
-//    /**
-//     * 查询统计数据
-//     * @return 统计数据
-//     */
-//    List<Statistics> listStatistics();
+    /**
+     * 查询统计数据
+     * @return 统计数据
+     */
+    List<Statistics> listStatistics(Statistics statistics);
 
     /**
      * 查询回收站统计信息

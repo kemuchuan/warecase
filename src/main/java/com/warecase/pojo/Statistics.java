@@ -17,5 +17,6 @@ public class Statistics {
     private Date returnDate;
     private String palletid;
     private String username;
+    private String returnType;
 
 }

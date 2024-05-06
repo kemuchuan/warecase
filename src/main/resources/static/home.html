@@ -46,5 +46,14 @@
 </div>
 
 <script src="js/home.js"></script>
+<script src="js/menu.js"></script>
+<script>
+  function logout() {
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("permission");
+    sessionStorage.removeItem("token");
+    window.location.href = "index.html";
+  }
+</script>
 </body>
 </html>

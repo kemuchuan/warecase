@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Retrieve user information from local storage
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
