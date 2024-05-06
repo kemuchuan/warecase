@@ -3,10 +3,8 @@ package com.warecase.config;
 import com.warecase.filter.TokenHandlerInterceptor;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.core.Ordered;
+import org.springframework.web.servlet.config.annotation.*;
 
 
 @Configuration
@@ -23,6 +21,7 @@ public class AuthWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(authHandlerInterceptor)
                 .addPathPatterns("/**")//配置拦截路径
+                .excludePathPatterns("/")// 放行路径
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/*.html","/**/*.html","/*.js","/**/*.js","/*.css","/**/*.css","/*.png","/**/*.png","/*.jpg","/**/*.jpg","/*.ico");//放行路径
     }
@@ -42,5 +41,12 @@ public class AuthWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+    }
+
+    // 配置默认跳转页面
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("redirect:/index.html");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }
