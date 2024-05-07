@@ -1,3 +1,4 @@
+// let url = "http://43.136.37.148:80/statistics"
 let url = "http://localhost:80/statistics"
 
 // Function to get all receive data from the server
@@ -12,7 +13,6 @@ function getAllReceive() {
                         '            <td>' + (index + 1) + '</td>\n' +
                         '            <td>' + item.productName + '</td>\n' +
                         '            <td>' + item.returnId + '</td>\n' +
-                        '            <td>' + item.serialId + '</td>\n' +
                         '            <td>' + item.palletid + '</td>\n' +
                         '            <td>' + item.username + '</td>\n' +
                         '            <td>' + item.returnType + '</td>\n' +
@@ -31,20 +31,20 @@ function getAllReceive() {
 // Function to add a new receive
 function addReceive() {
     let productName = document.getElementById("productName").value;
-    let serialId = document.getElementById("serialId").value;
+    let returnId = document.getElementById("returnId").value;
     let palletId = document.getElementById("palletId").value;
     let username = document.getElementById("staff").value;
     let returnType = document.getElementById("returnType").value;
     // let returnDate = document.getElementById("returnDate").value;
 
-    if (!productName || !serialId || !palletId || !username) {
+    if (!productName || !returnId || !palletId || !username) {
         alert("Please fill out all fields.");
         return;
     }
 
     let data = {
         "productName": productName,
-        "serialId": serialId,
+        "returnId": returnId,
         "palletid": palletId,
         "username": username,
         "returnType": returnType
@@ -167,11 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let data = {
             "productName": updatedValues[0],
             "returnId":updatedValues[1],
-            "serialId": updatedValues[2],
-            "palletid": updatedValues[3],
-            "username": updatedValues[4],
-            "returnType": updatedValues[5],
-            "returnDate": updatedValues[6]
+            "palletid": updatedValues[2],
+            "username": updatedValues[3],
+            "returnType": updatedValues[4],
+            "returnDate": updatedValues[5]
         }
 
         // Send updated receive information to the server

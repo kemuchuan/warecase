@@ -55,4 +55,12 @@ public interface ProductMapper {
     @Select("select * from product")
     List<Product> selectAllProducts();
 
+    /**
+     * 根据产品名称查询产品信息
+     * @param name 产品名称
+     * @return 产品信息对象
+     */
+    @Select("select serial_id, name, category, palletid from product where name = #{name}")
+    Product selectProductByName(String name);
+
 }

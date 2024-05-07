@@ -37,7 +37,7 @@ public interface ReturnDetailsMapper {
      * @param returnDetails 退货明细
      * @return 影响行数
      */
-    @Insert("insert into returndetails( userId, return_type, return_date, serial_id) value(#{userId},#{returnType},#{returnDate},#{serialId})")
+    @Insert("insert into returndetails( return_id,userId, return_type, return_date, serial_id) value(#{returnId},#{userId},#{returnType},#{returnDate},#{serialId})")
     int insertReturnDetails(ReturnDetails returnDetails);
 
     /**

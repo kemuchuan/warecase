@@ -1,3 +1,4 @@
+// let url = "http://43.136.37.148:80/user"
 let url = "http://localhost:80/user"
 
 // table information initialization
@@ -22,6 +23,7 @@ function getAllUser(){
 function addUser(){
     let name = document.getElementById("name").value;
     let userId = document.getElementById("userId").value;
+    let password = document.getElementById("password").value;
     let permission = document.getElementById("permission").value;
     if(!name.trim()||!userId.trim()||!permission.trim()){
         alert("Please fill out all fields.");
@@ -30,7 +32,8 @@ function addUser(){
     let data = {
         "name": name,
         "userId": userId,
-        "permission": permission
+        "permission": permission,
+        "password": password
     }
     fetch(url,{
         method:"POST",

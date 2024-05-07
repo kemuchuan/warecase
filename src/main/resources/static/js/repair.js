@@ -1,5 +1,6 @@
 // repair.js
 
+// let url = "http://43.136.37.148:80/statistics";
 let url = "http://localhost:80/statistics";
 
 // Function to get all repair data from the server
@@ -14,7 +15,6 @@ function getAllRepair() {
                         '            <td>' + (index + 1) + '</td>\n' +
                         '            <td>' + item.productName + '</td>\n' +
                         '            <td>' + item.returnId + '</td>\n' +
-                        '            <td>' + item.serialId + '</td>\n' +
                         '            <td>' + item.palletid + '</td>\n' +
                         '            <td>' + item.username + '</td>\n' +
                         '            <td>' + item.returnDate + '</td>\n' +
@@ -32,19 +32,19 @@ function getAllRepair() {
 // Function to add a new repair
 function addRepair(){
     let productName = document.getElementById("productName").value;
-    let serialId = document.getElementById("serialId").value;
+    let returnId = document.getElementById("returnId").value;
     let palletId = document.getElementById("palletId").value;
     let username = document.getElementById("staff").value;
     // let returnDate = document.getElementById("returnDate").value;
 
-    if(!productName ||!serialId ||!palletId ||!username){
+    if(!productName ||!returnId ||!palletId ||!username){
         alert("Please fill out all fields.");
         return;
     }
 
     let data = {
         "productName": productName,
-        "serialId": serialId,
+        "returnId": returnId,
         "palletid": palletId,
         "username": username,
         "returnType":"repair"
@@ -251,10 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let data = {
             "productName": updatedValues[0],
             "returnId": updatedValues[1],
-            "serialId": updatedValues[2],
-            "palletid": updatedValues[3],
-            "username": updatedValues[4],
-            "returnDate": updatedValues[5]
+            "palletid": updatedValues[2],
+            "username": updatedValues[3],
+            "returnDate": updatedValues[4]
         }
 
         // Send updated product information to the server

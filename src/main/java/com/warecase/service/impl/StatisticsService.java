@@ -4,6 +4,7 @@ import com.warecase.mapper.ProductMapper;
 import com.warecase.mapper.ReturnDetailsMapper;
 import com.warecase.mapper.StatisticsMapper;
 import com.warecase.mapper.UserMapper;
+import com.warecase.pojo.Product;
 import com.warecase.pojo.ReturnDetails;
 import com.warecase.pojo.Statistics;
 import com.warecase.pojo.User;
@@ -25,6 +26,9 @@ public class StatisticsService implements IStatisticsService {
 
     @Resource
     private ReturnDetailsMapper returnDetailsMapper;
+
+    @Resource
+    private ProductMapper productMapper;
 
     @Override
     public List<Statistics> listStatistics(Statistics statistics) {
@@ -49,8 +53,10 @@ public class StatisticsService implements IStatisticsService {
     public int insertStatistics(Statistics statistics) {
         ReturnDetails returnDetails = new ReturnDetails();
         returnDetails.setReturnDate(new Date());
-        returnDetails.setSerialId(statistics.getSerialId());
         User user = this.userMapper.selectUserByName(statistics.getUsername());
+        Product product = this.productMapper.selectProductByName(statistics.getProductName());
+        returnDetails.setReturnId(statistics.getReturnId());
+        returnDetails.setSerialId(product.getSerialId());
         returnDetails.setUserId(user.getUserId());
         returnDetails.setReturnType(statistics.getReturnType());
         return this.returnDetailsMapper.insertReturnDetails(returnDetails);
@@ -60,8 +66,10 @@ public class StatisticsService implements IStatisticsService {
     public int updateStatistics(Statistics statistics) {
         ReturnDetails returnDetails = new ReturnDetails();
         returnDetails.setReturnDate(statistics.getReturnDate());
-        returnDetails.setSerialId(statistics.getSerialId());
         User user = this.userMapper.selectUserByName(statistics.getUsername());
+        Product product = this.productMapper.selectProductByName(statistics.getProductName());
+        returnDetails.setReturnId(statistics.getReturnId());
+        returnDetails.setSerialId(product.getSerialId());
         returnDetails.setUserId(user.getUserId());
         returnDetails.setReturnType(statistics.getReturnType());
         returnDetails.setReturnId(statistics.getReturnId());
