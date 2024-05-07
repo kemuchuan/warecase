@@ -6,14 +6,16 @@ function getAllUser(){
     fetch(url,{headers:{"Authorization":sessionStorage.getItem("token")}}).then(res => res.json()).then(data => {
         let str = '';
         data.data.forEach((item,index) => {
-            str += "<tr>"+
-                "<td>" + (index + 1) + "</td>" +
-                "<td>" + item.userId + "</td>" +
-                "<td>" + item.name + "</td>" +
-                "<td>" + item.permission + "</td>" +
-                "<td><button class='operate-button edit'>Edit</button>" +
-                "<button class='operate-button delete' onclick='deleteUser(" + item.userId + ")'>Delete</button></td>" +
-                "</tr>"
+            str += '<tr>\n' +
+                '            <td>' + (index + 1) + '</td>\n' +
+                '            <td>' + item.userId + '</td>\n' +
+                '            <td>' + item.name + '</td>\n' +
+                '            <td>' + item.permission + '</td>\n' +
+                '            <td>\n' +
+                '              <button class=\'operate-button edit\' onclick=\'editProduct(this.parentNode.parentNode)\'>Edit</button>\n' +
+                `<button class="operate-button delete" onclick="delUser('${item.userId}')">Delete</button>`+
+                '            </td>\n' +
+                '        </tr>'
         });
         document.getElementById("productTableBody").innerHTML = str;
     })
@@ -51,7 +53,7 @@ function addUser(){
 }
 
 // delete user
-function deleteUser(userId){
+function delUser(userId){
     if(confirm("Are you sure to delete this user?")){
         fetch(url+"/" + userId,{
             method:"DELETE",
@@ -159,9 +161,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // Check if the clicked element is an edit button
         if (target.classList.contains("edit")) {
             var row = target.parentNode.parentNode;
+
             editProduct(row);
         }
     });
+
+    // document.getElementById("productTableBody").addEventListener("click", function (event) {
+    //     var target = event.target;
+    //     // Check if the clicked element is an edit button
+    //     if (target.classList.contains("delete")) {
+    //         var row = target.parentNode.parentNode;
+    //         var cells = row.getElementsByTagName("td");
+    //         let userId = cells[1].querySelector("input").value.trim();
+    //         delUser(userId);
+    //     }
+    // });
 
     getAllUser();
 
